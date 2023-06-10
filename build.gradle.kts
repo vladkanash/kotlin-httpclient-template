@@ -1,5 +1,6 @@
 val ktorVersion: String by project
 val logbackVersion: String by project
+val kotlinLoggingVersion: String by project
 
 plugins {
     val kotlinVersion = "1.8.21"
@@ -27,6 +28,7 @@ dependencies {
 
     //logging
     implementation("io.ktor:ktor-client-logging:$ktorVersion")
+    implementation("io.github.oshai:kotlin-logging-jvm:$kotlinLoggingVersion")
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
     testImplementation(kotlin("test"))

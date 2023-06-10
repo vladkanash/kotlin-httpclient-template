@@ -1,14 +1,17 @@
+import io.github.oshai.kotlinlogging.KotlinLogging
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.headers
 import io.ktor.client.request.post
 import io.ktor.client.request.setBody
+import io.ktor.client.statement.bodyAsText
 import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.append
 import kotlinx.serialization.Serializable
 import java.util.Locale.GERMAN
 
+private val log = KotlinLogging.logger { }
 suspend fun HttpClient.execute() {
     getRequest()
     postRequest()
@@ -16,7 +19,7 @@ suspend fun HttpClient.execute() {
 
 private suspend fun HttpClient.getRequest() {
     val response = get("http://httpstat.us/200")
-    println(response.status)
+    log.info(response.bodyAsText())
 }
 
 private suspend fun HttpClient.postRequest() {
